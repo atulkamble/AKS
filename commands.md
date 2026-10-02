@@ -1,3 +1,174 @@
+Here are the **very basic Kubernetes (K8s) commands** to learn first.
+
+```bash
+# 1. Check Kubernetes
+kubectl version --client
+
+# 2. Cluster information
+kubectl cluster-info
+
+# 3. View nodes
+kubectl get nodes
+
+# 4. View pods
+kubectl get pods
+
+# 5. View all resources
+kubectl get all
+
+
+# -------------------------
+# POD
+# -------------------------
+
+# Create Pod
+kubectl run mypod --image=nginx
+
+# List Pods
+kubectl get pods
+
+# Detailed Pod information
+kubectl describe pod mypod
+
+# Delete Pod
+kubectl delete pod mypod
+
+
+# -------------------------
+# DEPLOYMENT
+# -------------------------
+
+# Create Deployment
+kubectl create deployment myapp --image=nginx
+
+# List Deployments
+kubectl get deployments
+
+# Scale Deployment
+kubectl scale deployment myapp --replicas=3
+
+# Delete Deployment
+kubectl delete deployment myapp
+
+
+# -------------------------
+# SERVICE
+# -------------------------
+
+# Expose Deployment
+kubectl expose deployment myapp \
+  --type=LoadBalancer \
+  --port=80
+
+# List Services
+kubectl get services
+
+# Short form
+kubectl get svc
+
+# Delete Service
+kubectl delete service myapp
+
+
+# -------------------------
+# LOGS
+# -------------------------
+
+kubectl logs mypod
+
+
+# -------------------------
+# EXEC INTO POD
+# -------------------------
+
+kubectl exec -it mypod -- /bin/sh
+
+
+# -------------------------
+# YAML
+# -------------------------
+
+# Create resources
+kubectl apply -f deployment.yaml
+
+# View YAML-created resources
+kubectl get all
+
+# Delete resources
+kubectl delete -f deployment.yaml
+
+
+# -------------------------
+# NAMESPACE
+# -------------------------
+
+kubectl get namespaces
+
+# Short form
+kubectl get ns
+
+kubectl create namespace dev
+
+kubectl get pods -n dev
+
+
+# -------------------------
+# USEFUL SHORT FORMS
+# -------------------------
+
+kubectl get po       # Pods
+kubectl get deploy   # Deployments
+kubectl get svc      # Services
+kubectl get ns       # Namespaces
+kubectl get nodes    # Nodes
+
+
+# -------------------------
+# BASIC FLOW
+# -------------------------
+
+# Create Deployment
+kubectl create deployment web --image=nginx
+
+# Check
+kubectl get pods
+
+# Scale
+kubectl scale deployment web --replicas=3
+
+# Expose
+kubectl expose deployment web --type=LoadBalancer --port=80
+
+# Check everything
+kubectl get all
+
+# Delete
+kubectl delete deployment web
+kubectl delete service web
+```
+
+**Remember the basic hierarchy:**
+
+```text
+Cluster
+  |
+  +-- Node
+       |
+       +-- Pod
+            |
+            +-- Container
+
+Deployment
+   |
+   +-- manages Pods
+
+Service
+   |
+   +-- provides network access to Pods
+```
+
+For interviews/practice, the **10 most important commands** are: `get`, `run`, `create`, `apply`, `delete`, `describe`, `logs`, `exec`, `scale`, and `expose`.
+
 ## Kubernetes + AKS Commands Cheat Sheet
 
 ### 1. Kubernetes — Cluster Information
