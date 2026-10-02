@@ -1,4 +1,4 @@
-# Kubernetes + AKS — Short Learning Notes
+# Kubernetes + AKS 
 
 ## 1. Kubernetes (K8s)
 
